@@ -1,89 +1,7 @@
 import Layout from '@/components/Layout'
-import { ExternalLink, Mail, MapPin, Calendar } from 'lucide-react'
+import { Mail, MapPin, Calendar } from 'lucide-react'
 import { socialLinks } from '@/lib/socialLinks'
-
-const links = [
-  {
-    category: 'Professional',
-    items: [
-      {
-        title: 'LinkedIn',
-        description: 'Professional network and experience',
-        url: socialLinks.linkedin,
-        icon: '💼'
-      },
-      {
-        title: 'GitHub',
-        description: 'Code repositories and projects',
-        url: socialLinks.github,
-        icon: '💻'
-      },
-      {
-        title: 'Resume',
-        description: 'Download my full resume',
-        url: '/resume',
-        icon: '📄'
-      }
-    ]
-  },
-  {
-    category: 'Creative',
-    items: [
-      {
-        title: 'YouTube',
-        description: 'Videography and creative content',
-        url: socialLinks.youtube,
-        icon: '🎬'
-      },
-      {
-        title: 'Portfolio',
-        description: 'Creative work and projects',
-        url: '/projects',
-        icon: '🎨'
-      }
-    ]
-  },
-  {
-    category: 'Academic',
-    items: [
-      {
-        title: 'Published Papers',
-        description: 'Research and academic publications',
-        url: '/published-work',
-        icon: '📚'
-      },
-      {
-        title: 'Reading List',
-        description: 'A list of colorful textual inputs',
-        url: '/reading-list',
-        icon: '📖'
-      },
-      {
-        title: 'Blog',
-        description: 'Deliberations',
-        url: '/blog',
-        icon: '✍️'
-      }
-    ]
-  },
-  {
-    category: 'Contact',
-    items: [
-      {
-        title: 'Email',
-        description: socialLinks.email,
-        url: `mailto:${socialLinks.email}`,
-        icon: '📧'
-      },
-      {
-        title: 'Location',
-        description: socialLinks.location,
-        url: '#',
-        icon: '📍'
-      }
-    ]
-  }
-]
+import Image from 'next/image'
 
 export default function HomePage() {
   return (
@@ -95,7 +13,7 @@ export default function HomePage() {
             Maximilian Comfere
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            a proclamation of the soul
+            proof of existence through buidling, thinking then sharing
           </p>
           <div className="flex items-center justify-center space-x-6 text-sm text-gray-500">
             <div className="flex items-center space-x-2">
@@ -109,41 +27,51 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Links Grid */}
-        <div className="space-y-8">
-          {links.map((section) => (
-            <div key={section.category}>
-              <h2 className="text-2xl font-semibold mb-4 text-gray-800">
-                {section.category}
-              </h2>
-              <div className="grid gap-4 md:grid-cols-2">
-                {section.items.map((item) => (
-                  <a
-                    key={item.title}
-                    href={item.url}
-                    className="group block p-6 bg-white border border-gray-200 rounded-lg hover:shadow-lg transition-all duration-200 hover:border-gray-300"
-                    target={item.url.startsWith('http') ? '_blank' : undefined}
-                    rel={item.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    <div className="flex items-start space-x-4">
-                      <span className="text-2xl">{item.icon}</span>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center space-x-2">
-                          <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black">
-                            {item.title}
-                          </h3>
-                          {item.url.startsWith('http') && (
-                            <ExternalLink className="h-4 w-4 text-gray-400 group-hover:text-gray-600" />
-                          )}
-                        </div>
-                        <p className="text-gray-600 mt-1">{item.description}</p>
-                      </div>
-                    </div>
-                  </a>
-                ))}
-              </div>
+        {/* Profile and Bio Section */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-12 space-y-8 lg:space-y-0">
+          {/* Profile Picture */}
+          <div className="flex-shrink-0 flex justify-center lg:justify-start">
+            <div className="w-48 h-48 rounded-full border-4 border-white shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+              <Image
+                src="/IMG_4728.jpeg"
+                alt="Maximilian Comfere"
+                width={400}
+                height={400}
+                className="w-full h-full object-cover object-top"
+                priority
+              />
             </div>
-          ))}
+          </div>
+          
+          {/* Bio Content */}
+          <div className="flex-1 space-y-6">
+            <div className="prose prose-lg max-w-none">
+              <p className="text-gray-700 leading-relaxed">
+                I'm a researcher, developer, and creative technologist passionate about the intersection of 
+                artificial intelligence, behavioral science, and human-computer interaction. My work spans 
+                from computational neuroscience research to building scalable software systems that solve 
+                real-world problems.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed">
+                Currently, I'm exploring how machine learning can help us better understand complex social 
+                behaviors, particularly in the context of eusocial animals like naked mole-rats. My research 
+                involves developing novel computational methods for behavioral analysis, including transition 
+                matrices and clustering algorithms that reveal hidden patterns in social interaction data.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed">
+                When I'm not diving deep into research, I'm building innovative software solutions and 
+                experimenting with creative coding. I believe technology should be both powerful and 
+                accessible, which drives my work on open-source projects and educational content.
+              </p>
+              
+              <p className="text-gray-700 leading-relaxed">
+                Based in {socialLinks.location}, I'm always open to collaborating on interesting projects 
+                that push the boundaries of what's possible at the intersection of science and technology.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Contact CTA */}

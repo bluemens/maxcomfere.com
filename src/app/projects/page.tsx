@@ -18,34 +18,19 @@ const projects = [
     endDate: null
   },
   {
-    title: "Creative Coding Framework",
-    description: "An open-source JavaScript framework for generative art and creative coding applications",
+    title: "anacyclosis",
+    description: "Agentic trading algorithm for trading medium term options based on the predictably insincere movements of government representatives",
     status: "In Development",
-    category: "Creative Technology",
-    technologies: ["JavaScript", "WebGL", "Three.js", "p5.js"],
+    category: "Financial Market Modeling",
+    technologies: ["Python", "IBKR"],
     links: {
-      github: "https://github.com/bluemens/creative-coding-framework",
-      demo: "https://demo.creative-coding.com",
+      github: "https://github.com/bluemens/anacyclosis",
+      demo: null,
       live: null
     },
     image: "/projects/creative-coding.jpg",
-    startDate: "2024-06",
+    startDate: "2025-06",
     endDate: null
-  },
-  {
-    title: "Microservices Platform",
-    description: "A scalable microservices platform with automated deployment and monitoring",
-    status: "Completed",
-    category: "Backend Development",
-    technologies: ["Node.js", "Docker", "Kubernetes", "MongoDB", "Redis"],
-    links: {
-      github: "https://github.com/bluemens/microservices-platform",
-      demo: null,
-      live: "https://microservices-platform.com"
-    },
-    image: "/projects/microservices.jpg",
-    startDate: "2023-03",
-    endDate: "2024-01"
   }
 ]
 

@@ -1,80 +1,14 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
 import { Calendar, Clock, Tag } from 'lucide-react'
+import { getAllPosts, getFeaturedPosts, getAllCategories } from '@/lib/blog'
 
-const blogPosts = [
-  {
-    slug: 'building-scalable-microservices',
-    title: 'Building Scalable Microservices: Lessons from Production',
-    excerpt: 'A deep dive into the challenges and solutions we encountered while scaling our microservices architecture to handle millions of requests per day.',
-    category: 'Engineering/Tech',
-    date: '2023-12-15',
-    readTime: '8 min read',
-    featured: true,
-    image: '/blog/microservices-architecture.jpg',
-    tags: ['Microservices', 'Architecture', 'Scalability', 'Production']
-  },
-  {
-    slug: 'creative-coding-generative-art',
-    title: 'Creative Coding: From Algorithms to Art',
-    excerpt: 'Exploring the intersection of mathematics, programming, and visual art through generative algorithms and real-time rendering techniques.',
-    category: 'Creative/Videography',
-    date: '2023-11-28',
-    readTime: '12 min read',
-    featured: true,
-    image: '/blog/generative-art.jpg',
-    tags: ['Creative Coding', 'Generative Art', 'WebGL', 'JavaScript']
-  },
-  {
-    slug: 'startup-lessons-learned',
-    title: 'Startup Lessons: Building Products That Matter',
-    excerpt: 'Reflections on the journey of building and scaling a technology startup, from initial concept to serving thousands of users.',
-    category: 'Startup/Business',
-    date: '2023-11-10',
-    readTime: '10 min read',
-    featured: false,
-    image: '/blog/startup-lessons.jpg',
-    tags: ['Startup', 'Product Development', 'Leadership', 'Growth']
-  },
-  {
-    slug: 'machine-learning-production',
-    title: 'Machine Learning in Production: Best Practices',
-    excerpt: 'Practical insights into deploying and maintaining machine learning models in production environments with real-world examples.',
-    category: 'Engineering/Tech',
-    date: '2023-10-25',
-    readTime: '15 min read',
-    featured: false,
-    image: '/blog/ml-production.jpg',
-    tags: ['Machine Learning', 'Production', 'MLOps', 'Python']
-  },
-  {
-    slug: 'videography-workflow-automation',
-    title: 'Automating Video Production Workflows',
-    excerpt: 'How we built custom tools and scripts to streamline video production processes and improve creative output quality.',
-    category: 'Creative/Videography',
-    date: '2023-10-12',
-    readTime: '6 min read',
-    featured: false,
-    image: '/blog/video-automation.jpg',
-    tags: ['Videography', 'Automation', 'Workflow', 'Creative Tools']
-  },
-  {
-    slug: 'developer-experience-future',
-    title: 'The Future of Developer Experience',
-    excerpt: 'Exploring emerging trends in developer tooling, automation, and workflow optimization that are reshaping how we build software.',
-    category: 'Engineering/Tech',
-    date: '2023-09-30',
-    readTime: '11 min read',
-    featured: false,
-    image: '/blog/dev-experience.jpg',
-    tags: ['Developer Experience', 'Tooling', 'Automation', 'Productivity']
-  }
-]
-
-const categories = ['All', 'Engineering/Tech', 'Startup/Business', 'Creative/Videography']
+// Get blog data at build time
+const blogPosts = getAllPosts()
+const featuredPosts = getFeaturedPosts()
+const categories = getAllCategories()
 
 export default function BlogPage() {
-  const featuredPosts = blogPosts.filter(post => post.featured)
   const regularPosts = blogPosts.filter(post => !post.featured)
 
   return (

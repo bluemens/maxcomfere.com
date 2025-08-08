@@ -6,7 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "blog:new": "node scripts/content-helpers.js blog:new",
+    "blog:draft": "node scripts/content-helpers.js blog:draft",
+    "blog:list": "node scripts/content-helpers.js blog:list",
+    "reading:add": "node scripts/content-helpers.js reading:add",
+    "reading:status": "node scripts/content-helpers.js reading:status",
+    "reading:list": "node scripts/content-helpers.js reading:list",
+    "content:help": "node scripts/content-helpers.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -20,6 +27,9 @@
     "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
