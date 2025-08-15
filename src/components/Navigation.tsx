@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { socialLinksArray } from '@/lib/socialLinks'
+import ThemeToggle from './ThemeToggle'
 
 const navigation = [
   { name: 'Links', href: '/' },
@@ -18,11 +19,11 @@ export default function Navigation() {
   const pathname = usePathname()
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <nav className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-black">
+          <Link href="/" className="text-xl font-bold text-black dark:text-white">
             Maximilian Comfere
           </Link>
 
@@ -36,8 +37,8 @@ export default function Navigation() {
                   href={item.href}
                   className={`text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-black border-b-2 border-black'
-                      : 'text-gray-600 hover:text-black'
+                      ? 'text-black dark:text-white border-b-2 border-black dark:border-white'
+                      : 'text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white'
                   }`}
                 >
                   {item.name}
@@ -46,7 +47,7 @@ export default function Navigation() {
             })}
           </div>
 
-          {/* Social Links */}
+          {/* Social Links and Theme Toggle */}
           <div className="flex items-center space-x-4">
             {socialLinksArray.map((item) => {
               const Icon = item.icon
@@ -56,20 +57,21 @@ export default function Navigation() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-black transition-colors duration-200"
+                  className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-200"
                   aria-label={item.name}
                 >
                   <Icon className="h-5 w-5" />
                 </a>
               )
             })}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-600 hover:text-black"
+              className="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white"
               aria-label="Open mobile menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
