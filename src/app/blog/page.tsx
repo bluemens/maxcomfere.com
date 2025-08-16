@@ -1,15 +1,13 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
-import { Calendar, Clock, Tag } from 'lucide-react'
-import { getAllPosts, getFeaturedPosts, getAllCategories } from '@/lib/blog'
+import { Calendar, Clock } from 'lucide-react'
+import { getAllPosts, getFeaturedPosts } from '@/lib/blog'
 
 // Get blog data at build time
 const blogPosts = getAllPosts()
 const featuredPosts = getFeaturedPosts()
-const categories = getAllCategories()
 
 export default function BlogPage() {
-  const regularPosts = blogPosts.filter(post => !post.featured)
 
   return (
     <Layout>

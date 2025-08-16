@@ -108,7 +108,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       content,
       image: data.image
     }
-  } catch (error) {
+  } catch {
     return null
   }
 }

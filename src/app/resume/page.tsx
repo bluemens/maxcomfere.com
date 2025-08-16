@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout'
-import { Download, ExternalLink, Mail, Phone, MapPin, Calendar, GraduationCap, Briefcase, Code, Globe, Award } from 'lucide-react'
+import { Download, ExternalLink, Mail, Phone, MapPin, GraduationCap, Briefcase, Code, Award } from 'lucide-react'
 
 export default function ResumePage() {
   return (
@@ -94,7 +94,7 @@ export default function ResumePage() {
               <div>
                 <div className="flex justify-between items-start mb-2">
                   <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">Columbia's Mortimer B. Zuckerman Mind, Brain and Behavior Institute</h4>
+                    <h4 className="font-semibold text-gray-900 dark:text-gray-100">Columbia&apos;s Mortimer B. Zuckerman Mind, Brain and Behavior Institute</h4>
                     <p className="text-gray-600 dark:text-gray-400">Undergraduate Software Lab Assistant</p>
                   </div>
                   <div className="text-right">
@@ -121,7 +121,7 @@ export default function ResumePage() {
                   </div>
                 </div>
                 <ul className="list-disc list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
-                  <li>Automated test data creation for myelodysplastic risk assessment model using Python and the integration of ChatGPT's API.</li>
+                  <li>Automated test data creation for myelodysplastic risk assessment model using Python and the integration of ChatGPT&apos;s API.</li>
                   <li>Developed a comprehensive team site to access existing workflows and files using JavaScript, CSS, HTML and React.</li>
                   <li>Designed and tested front-end mechanics for myelodysplastic risk calculator web application.</li>
                   <li>The risk calculator implemented a machine learning model that assessed medical record data and accessed real time laboratory results using SQL streams to predict patient outcomes and guide health provider decisions.</li>

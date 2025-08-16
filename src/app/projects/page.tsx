@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout'
-import { ExternalLink, Github, Play, Globe, Calendar } from 'lucide-react'
+import { Github, Play, Globe, Calendar } from 'lucide-react'
 
 const projects = [
   {

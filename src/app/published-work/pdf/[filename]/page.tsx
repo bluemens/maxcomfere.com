@@ -3,13 +3,13 @@ import { ArrowLeft, Download, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
 interface PDFViewerPageProps {
-  params: {
+  params: Promise<{
     filename: string
-  }
+  }>
 }
 
-export default function PDFViewerPage({ params }: PDFViewerPageProps) {
-  const { filename } = params
+export default async function PDFViewerPage({ params }: PDFViewerPageProps) {
+  const { filename } = await params
   const pdfPath = `/papers/${filename}`
 
   return (

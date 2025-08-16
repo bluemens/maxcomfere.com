@@ -15,7 +15,7 @@ const publications = [
   }
 ]
 
-const categories = ["All", "Research Paper", "Article", "Blog Post", "Technical Guide"]
+
 
 export default function PublishedWorkPage() {
   // Calculate dynamic stats

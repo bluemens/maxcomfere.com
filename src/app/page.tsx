@@ -47,28 +47,28 @@ export default function HomePage() {
           <div className="flex-1 space-y-6">
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                I'm a researcher, developer, and creative technologist passionate about the intersection of 
+                I&apos;m a researcher, developer, and creative technologist passionate about the intersection of 
                 artificial intelligence, behavioral science, and human-computer interaction. My work spans 
                 from computational neuroscience research to building scalable software systems that solve 
                 real-world problems.
               </p>
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Currently, I'm exploring how machine learning can help us better understand complex social 
+                Currently, I&apos;m exploring how machine learning can help us better understand complex social 
                 behaviors, particularly in the context of eusocial animals like naked mole-rats. My research 
                 involves developing novel computational methods for behavioral analysis, including transition 
                 matrices and clustering algorithms that reveal hidden patterns in social interaction data.
               </p>
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                When I'm not diving deep into research, I'm building innovative software solutions and 
+                When I&apos;m not diving deep into research, I&apos;m building innovative software solutions and 
                 experimenting with creative coding. I believe technology should be both powerful and 
                 accessible, which drives my work on open-source projects and educational content.
               </p>
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Based in {socialLinks.location}, I'm always open to collaborating on interesting projects 
-                that push the boundaries of what's possible at the intersection of science and technology.
+                Based in {socialLinks.location}, I&apos;m always open to collaborating on interesting projects 
+                that push the boundaries of what&apos;s possible at the intersection of science and technology.
               </p>
             </div>
           </div>

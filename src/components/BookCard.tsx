@@ -73,7 +73,7 @@ export default function BookCard({ book, onClick }: BookCardProps) {
         {book.personalNotes && (
           <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
             <p className="text-xs text-gray-700 dark:text-gray-300 italic overflow-hidden text-ellipsis whitespace-nowrap">
-              "{book.personalNotes}"
+              &ldquo;{book.personalNotes}&rdquo;
             </p>
           </div>
         )}

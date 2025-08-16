@@ -10,7 +10,10 @@ interface ReadingListClientProps {
   books: Book[]
   categories: string[]
   tags: string[]
-  stats: any
+  stats: {
+    totalBooks: number
+    averageRating: number
+  }
 }
 
 export default function ReadingListClient({ books, categories, tags, stats }: ReadingListClientProps) {

@@ -106,7 +106,7 @@ export default function BookModal({ book, isOpen, onClose }: BookModalProps) {
                 Personal Notes
               </h4>
               <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg p-4">
-                <p className="text-gray-800 dark:text-gray-200 italic leading-relaxed">"{book.personalNotes}"</p>
+                <p className="text-gray-800 dark:text-gray-200 italic leading-relaxed">&ldquo;{book.personalNotes}&rdquo;</p>
               </div>
             </div>
           )}
