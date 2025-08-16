@@ -40,8 +40,8 @@ export default function PublishedWorkPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-4">Published Work</h1>
-          <p className="text-xl text-gray-600">
+          <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">Published Work</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Academic papers, articles, and technical publications
           </p>
         </div>
@@ -49,41 +49,41 @@ export default function PublishedWorkPage() {
         {/* Publications List */}
         <div className="space-y-8">
           {publications.map((pub, index) => (
-            <article key={index} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200">
+            <article key={index} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-gray-900/20 transition-shadow duration-200">
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300">
                       {pub.category}
                     </span>
-                    <div className="flex items-center space-x-1 text-gray-500">
+                    <div className="flex items-center space-x-1 text-gray-500 dark:text-gray-400">
                       <Calendar className="h-4 w-4" />
                       <span className="text-sm">{pub.year}</span>
                     </div>
                   </div>
                   
-                  <h2 className="text-xl font-semibold mb-3 text-gray-900">
+                  <h2 className="text-xl font-semibold mb-3 text-gray-900 dark:text-gray-100">
                     {pub.title}
                   </h2>
                   
-                  <div className="flex items-center space-x-2 mb-3 text-sm text-gray-600">
+                  <div className="flex items-center space-x-2 mb-3 text-sm text-gray-600 dark:text-gray-400">
                     <Users className="h-4 w-4" />
                     <span>{pub.authors.join(', ')}</span>
                   </div>
                   
-                  <p className="text-gray-600 mb-2">
+                  <p className="text-gray-600 dark:text-gray-400 mb-2">
                     <span className="font-medium">{pub.venue}</span>
                   </p>
                   
                   {pub.doi && (
-                    <p className="text-sm text-gray-500 mb-3">
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
                       DOI: {pub.doi}
                     </p>
                   )}
                 </div>
               </div>
               
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                 {pub.summary}
               </p>
               
@@ -114,24 +114,24 @@ export default function PublishedWorkPage() {
         </div>
 
         {/* Stats */}
-        <div className="mt-12 bg-gray-50 rounded-lg p-6">
-          <h3 className="text-lg font-semibold mb-4">Publication Statistics</h3>
+        <div className="mt-12 bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Publication Statistics</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{totalPublications}</div>
-              <div className="text-sm text-gray-600">Total Publications</div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{totalPublications}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Total Publications</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{categoryCounts["Research Paper"] || 0}</div>
-              <div className="text-sm text-gray-600">Research Papers</div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{categoryCounts["Research Paper"] || 0}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Research Papers</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{categoryCounts["Article"] || 0}</div>
-              <div className="text-sm text-gray-600">Articles</div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{categoryCounts["Article"] || 0}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Articles</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-gray-900">{publicationPeriod}</div>
-              <div className="text-sm text-gray-600">Publication Period</div>
+              <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">{publicationPeriod}</div>
+              <div className="text-sm text-gray-600 dark:text-gray-400">Publication Period</div>
             </div>
           </div>
         </div>

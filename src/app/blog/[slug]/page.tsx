@@ -31,7 +31,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="mb-8">
           <Link 
             href="/blog" 
-            className="inline-flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+            className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Blog</span>
@@ -41,10 +41,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Article Header */}
         <header className="mb-12">
           <div className="flex items-center space-x-3 mb-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300">
               {post.category}
             </span>
-            <div className="flex items-center space-x-4 text-sm text-gray-500">
+            <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex items-center space-x-1">
                 <Calendar className="h-4 w-4" />
                 <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -56,18 +56,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100">
             {post.title}
           </h1>
           
-          <p className="text-xl text-gray-600 mb-6 leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
             {post.excerpt}
           </p>
           
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
-              <span key={tag} className="inline-flex items-center px-2 py-1 rounded-md text-sm bg-gray-100 text-gray-700">
+              <span key={tag} className="inline-flex items-center px-2 py-1 rounded-md text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                 <Tag className="h-3 w-3 mr-1" />
                 {tag}
               </span>
@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {/* Article Content */}
-        <article className="prose prose-lg max-w-none">
+        <article className="prose prose-lg max-w-none dark:prose-invert">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeHighlight]}
@@ -84,31 +84,31 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               // Custom styling for code blocks
               code: ({ className, children, ...props }) => {
                 return (
-                  <code className={`bg-gray-100 rounded px-1 py-0.5 text-sm ${className || ''}`} {...props}>
+                  <code className={`bg-gray-100 dark:bg-gray-800 rounded px-1 py-0.5 text-sm ${className || ''}`} {...props}>
                     {children}
                   </code>
                 )
               },
               pre: ({ children }) => (
-                <pre className="bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto my-6">
+                <pre className="bg-gray-900 dark:bg-gray-800 text-gray-100 dark:text-gray-200 rounded-lg p-4 overflow-x-auto my-6 border border-gray-700 dark:border-gray-600">
                   {children}
                 </pre>
               ),
               // Custom styling for headings
               h1: ({ children }) => (
-                <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900">{children}</h1>
+                <h1 className="text-3xl font-bold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900">{children}</h2>
+                <h2 className="text-2xl font-semibold mt-8 mb-4 text-gray-900 dark:text-gray-100">{children}</h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-xl font-semibold mt-6 mb-3 text-gray-900">{children}</h3>
+                <h3 className="text-xl font-semibold mt-6 mb-3 text-gray-900 dark:text-gray-100">{children}</h3>
               ),
               // Custom styling for links
               a: ({ href, children }) => (
                 <a 
                   href={href} 
-                  className="text-blue-600 hover:text-blue-800 underline"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline"
                   target={href?.startsWith('http') ? '_blank' : undefined}
                   rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
                 >
@@ -117,16 +117,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               ),
               // Custom styling for blockquotes
               blockquote: ({ children }) => (
-                <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-700 my-6">
+                <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic text-gray-700 dark:text-gray-300 my-6">
                   {children}
                 </blockquote>
               ),
               // Custom styling for lists
               ul: ({ children }) => (
-                <ul className="list-disc list-inside space-y-2 my-4">{children}</ul>
+                <ul className="list-disc list-inside space-y-2 my-4 text-gray-700 dark:text-gray-300">{children}</ul>
               ),
               ol: ({ children }) => (
-                <ol className="list-decimal list-inside space-y-2 my-4">{children}</ol>
+                <ol className="list-decimal list-inside space-y-2 my-4 text-gray-700 dark:text-gray-300">{children}</ol>
+              ),
+              // Custom styling for paragraphs
+              p: ({ children }) => (
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed my-4">{children}</p>
+              ),
+              // Custom styling for strong text
+              strong: ({ children }) => (
+                <strong className="font-semibold text-gray-900 dark:text-gray-100">{children}</strong>
+              ),
+              // Custom styling for emphasis
+              em: ({ children }) => (
+                <em className="italic text-gray-700 dark:text-gray-300">{children}</em>
               )
             }}
           >
@@ -135,17 +147,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </article>
 
         {/* Article Footer */}
-        <footer className="mt-12 pt-8 border-t border-gray-200">
+        <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
             <Link 
               href="/blog" 
-              className="inline-flex items-center space-x-2 text-gray-600 hover:text-black transition-colors"
+              className="inline-flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to All Posts</span>
             </Link>
             
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-500 dark:text-gray-400">
               Published on {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',

@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Maximilian Comfere',
-  description: 'Personal website of Maximilian Comfere - Engineer, Creator, and Innovator',
-  keywords: ['Maximilian Comfere', 'Engineering', 'Technology', 'Creative', 'Videography'],
+  description: 'Personal website of Maximilian Comfere',
+  keywords: ['Maximilian Comfere', 'Engineering', 'Technology', 'Writing', 'Reading'],
   authors: [{ name: 'Maximilian Comfere' }],
   openGraph: {
     title: 'Maximilian Comfere',
-    description: 'Personal website of Maximilian Comfere - Engineer, Creator, and Innovator',
+    description: 'Personal website of Maximilian Comfere',
     type: 'website',
   },
 }
