@@ -3,7 +3,7 @@ import { Github, Linkedin, Youtube } from 'lucide-react'
 // Object-style access for direct URL references
 export const socialLinks = {
   github: 'https://github.com/bluemens',
-  linkedin: 'https://www.linkedin.com/in/maximilian-comfere-393991291/',
+  linkedin: 'https://www.linkedin.com/in/maxcomfere',
   youtube: 'https://www.youtube.com/@maxcomfere4403',
   email: 'maxcomfere@gmail.com',
   location: 'New York, NY'
