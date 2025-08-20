@@ -13,7 +13,7 @@ export default function HomePage() {
             Maximilian Comfere
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            proof of existence through buidling, thinking then sharing
+            proof of existence through thinking, building and sharing
           </p>
           <div className="flex items-center justify-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center space-x-2">
@@ -47,28 +47,22 @@ export default function HomePage() {
           <div className="flex-1 space-y-6">
             <div className="prose prose-lg max-w-none dark:prose-invert">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                I&apos;m a researcher, developer, and creative technologist passionate about the intersection of 
-                artificial intelligence, behavioral science, and human-computer interaction. My work spans 
-                from computational neuroscience research to building scalable software systems that solve 
-                real-world problems.
+                I&apos;m a student, engineer, writer and architect passionate about the intersection of 
+                artificial intelligence, software development, political systems and philosophy.
+                I&apos;m currently studying computer engineeringat Columbia University.
               </p>
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Currently, I&apos;m exploring how machine learning can help us better understand complex social 
-                behaviors, particularly in the context of eusocial animals like naked mole-rats. My research 
-                involves developing novel computational methods for behavioral analysis, including transition 
-                matrices and clustering algorithms that reveal hidden patterns in social interaction data.
+                Here you can find the snapshot of my current projects and interests. It showcases the state of my current projects, some
+                relatively short, others life long endeavors, none of a gimmicky nature. All are built for application. Here I also broadcast
+                my thoughts writ large on a vairety of subjhects ranging from geopolitical perspectives and philosophical inquiries to specific
+                development journals and technical documentation. I also share my reading list, although it is not exhaustive and due to 
+                laziness is only contains works read and purchased post August 2025
               </p>
               
+          
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                When I&apos;m not diving deep into research, I&apos;m building innovative software solutions and 
-                experimenting with creative coding. I believe technology should be both powerful and 
-                accessible, which drives my work on open-source projects and educational content.
-              </p>
-              
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Based in {socialLinks.location}, I&apos;m always open to collaborating on interesting projects 
-                that push the boundaries of what&apos;s possible at the intersection of science and technology.
+                Based in {socialLinks.location}. Open to discussion and disagreement (preferably the latter).
               </p>
             </div>
           </div>
