@@ -49,15 +49,15 @@ export default function HomePage() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 I&apos;m a student, engineer, writer and architect passionate about the intersection of 
                 artificial intelligence, software development, political systems and philosophy.
-                I&apos;m currently studying computer engineeringat Columbia University.
+                I&apos;m currently studying computer engineering at Columbia University.
               </p>
               
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Here you can find the snapshot of my current projects and interests. It showcases the state of my current projects, some
+                Here you can find a snapshot of my current projects and interests. It showcases the state of my current projects, some
                 relatively short, others life long endeavors, none of a gimmicky nature. All are built for application. Here I also broadcast
-                my thoughts writ large on a vairety of subjhects ranging from geopolitical perspectives and philosophical inquiries to specific
-                development journals and technical documentation. I also share my reading list, although it is not exhaustive and due to 
-                laziness is only contains works read and purchased post August 2025
+                my thoughts writ large on a vairety of subjects ranging from geopolitical perspectives and philosophical inquiries to specific
+                development journals and technical documentation. I also share my reading list, although it is not exhaustive and only contains 
+                works read and purchased post August 2025
               </p>
               
           
