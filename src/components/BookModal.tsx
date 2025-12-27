@@ -1,6 +1,7 @@
 'use client'
 
 import { X, Star, Calendar, Tag, BookOpen, Quote } from 'lucide-react'
+import Image from 'next/image'
 import { Book } from '@/lib/reading'
 import { getBookCover } from '@/lib/bookCovers'
 import { useState, useEffect } from 'react'
@@ -85,11 +86,14 @@ export default function BookModal({ book, isOpen, onClose }: BookModalProps) {
             <div className="flex-shrink-0">
               {hasCoverImage ? (
                 <div className="relative w-32 h-40 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src={coverUrl}
                     alt={`${book.title} cover`}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                     onError={handleImageError}
+                    unoptimized={coverUrl.startsWith('http')}
+                    sizes="128px"
                   />
                 </div>
               ) : (

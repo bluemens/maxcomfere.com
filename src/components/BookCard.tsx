@@ -1,6 +1,7 @@
 'use client'
 
 import { Star, BookOpen, Calendar, Tag } from 'lucide-react'
+import Image from 'next/image'
 import { Book } from '@/lib/reading'
 import { getBookCover } from '@/lib/bookCovers'
 import { useState, useEffect } from 'react'
@@ -68,11 +69,14 @@ export default function BookCard({ book, onClick }: BookCardProps) {
       {/* Book Cover */}
       <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
         {hasCoverImage ? (
-          <img
+          <Image
             src={coverUrl}
             alt={`${book.title} cover`}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
             onError={handleImageError}
+            unoptimized={coverUrl.startsWith('http')}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           />
         ) : (
           <>

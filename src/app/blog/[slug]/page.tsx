@@ -101,9 +101,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             rehypePlugins={[rehypeHighlight, rehypeKatex]}
             components={{
               // Custom image component for inline markdown images
-              img: (props: any) => {
+              img: (props: React.ComponentProps<'img'>) => {
                 const { src, alt } = props
-                if (!src) return null
+                if (!src || typeof src !== 'string') return null
                 const isExternal = src.startsWith('http')
                 
                 return (
