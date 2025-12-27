@@ -1,6 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 /**
+ * Type definitions for Google Books API response
+ */
+interface ImageLinks {
+  smallThumbnail?: string
+  thumbnail?: string
+  small?: string
+  medium?: string
+  large?: string
+  extraLarge?: string
+}
+
+interface VolumeInfo {
+  title?: string
+  authors?: string[]
+  imageLinks?: ImageLinks
+}
+
+interface BookItem {
+  volumeInfo?: VolumeInfo
+}
+
+interface GoogleBooksResponse {
+  items?: BookItem[]
+}
+
+/**
  * Fetches book cover image URL from Google Books API
  * 
  * Google Books API is free and doesn't require an API key for low-volume usage
@@ -25,7 +51,7 @@ async function fetchBookCover(title: string, author: string): Promise<string | n
       return null
     }
 
-    let data = await response.json()
+    let data = await response.json() as GoogleBooksResponse
     let coverUrl = findBestMatch(data, title, author)
     
     if (coverUrl) {
@@ -42,7 +68,7 @@ async function fetchBookCover(title: string, author: string): Promise<string | n
       return null
     }
 
-    data = await response.json()
+    data = await response.json() as GoogleBooksResponse
     coverUrl = findBestMatch(data, title, author)
     
     return coverUrl
@@ -55,7 +81,7 @@ async function fetchBookCover(title: string, author: string): Promise<string | n
 /**
  * Finds the best matching book from API results
  */
-function findBestMatch(data: any, title: string, author: string): string | null {
+function findBestMatch(data: GoogleBooksResponse, title: string, author: string): string | null {
   if (!data.items || data.items.length === 0) {
     return null
   }
@@ -64,7 +90,7 @@ function findBestMatch(data: any, title: string, author: string): string | null 
   const authorLower = author.toLowerCase()
 
   // Score each result and find the best match
-  let bestMatch: any = null
+  let bestMatch: VolumeInfo | null = null
   let bestScore = 0
 
   for (const item of data.items) {
@@ -75,7 +101,7 @@ function findBestMatch(data: any, title: string, author: string): string | null 
 
     let score = 0
     const itemTitle = (volumeInfo.title || '').toLowerCase()
-    const itemAuthors = (volumeInfo.authors || []).map((a: string) => a.toLowerCase())
+    const itemAuthors = (volumeInfo.authors || []).map((a) => a.toLowerCase())
 
     // Title match scoring
     if (itemTitle.includes(titleLower) || titleLower.includes(itemTitle)) {
