@@ -1,5 +1,6 @@
 ---
 title: "The preservation of information in the projections of human percepts"
+image: "/blog/43a237dbae6287f0831883229bf7176e.jpg"
 excerpt: "A mathematic framing of Nietzsche's theory of projection"
 category: "Philosophy"
 tags: ["Philosophy", "Columbia", "Nietzsche"]

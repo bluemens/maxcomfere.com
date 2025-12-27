@@ -1,5 +1,6 @@
 ---
 title: "Lawrence of Arabia"
+image: "/blog/Peter-OToole-Lawrence-of-Arabia-David-Lean.jpg.webp"
 excerpt: "A review of the film Lawrence of Arabia"
 category: "Film"
 tags: ["Film", "History", "War"]

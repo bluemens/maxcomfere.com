@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock } from 'lucide-react'
 import { getAllPosts, getFeaturedPosts } from '@/lib/blog'
 
@@ -27,10 +28,21 @@ export default function BlogPage() {
             <div className="grid gap-8 md:grid-cols-2">
               {featuredPosts.map((post) => (
                 <article key={post.slug} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-gray-900/20 transition-shadow duration-200">
-                  {/* Featured Image Placeholder */}
-                  <div className="h-64 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                    <div className="text-gray-400 dark:text-gray-500 text-sm">Featured Image</div>
-                  </div>
+                  {/* Featured Image */}
+                  {post.image ? (
+                    <div className="h-64 relative overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-64 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                      <div className="text-gray-400 dark:text-gray-500 text-sm">No Image</div>
+                    </div>
+                  )}
                   
                   <div className="p-6">
                     <div className="flex items-center space-x-2 mb-3">
@@ -75,10 +87,21 @@ export default function BlogPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {blogPosts.map((post) => (
               <article key={post.slug} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-lg dark:hover:shadow-xl dark:hover:shadow-gray-900/20 transition-shadow duration-200">
-                {/* Post Image Placeholder */}
-                <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-                  <div className="text-gray-400 dark:text-gray-500 text-sm">Post Image</div>
-                </div>
+                {/* Post Image */}
+                {post.image ? (
+                  <div className="h-48 relative overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div className="h-48 bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                    <div className="text-gray-400 dark:text-gray-500 text-sm">No Image</div>
+                  </div>
+                )}
                 
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-3">

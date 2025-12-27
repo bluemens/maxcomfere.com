@@ -1,5 +1,9 @@
+'use client'
+
 import { Star, BookOpen, Calendar, Tag } from 'lucide-react'
 import { Book } from '@/lib/reading'
+import { getBookCover } from '@/lib/bookCovers'
+import { useState, useEffect } from 'react'
 
 interface BookCardProps {
   book: Book
@@ -7,20 +11,82 @@ interface BookCardProps {
 }
 
 export default function BookCard({ book, onClick }: BookCardProps) {
+  const [coverUrl, setCoverUrl] = useState<string | null>(book.coverImage || null)
+  const [imageError, setImageError] = useState(false)
+  const [isLoading, setIsLoading] = useState(!book.coverImage)
+  const [triedLocalFiles, setTriedLocalFiles] = useState(false)
+
+  useEffect(() => {
+    // If coverImage is set in books.json, try it first
+    // The onError handler will trigger if it fails
+    if (book.coverImage) {
+      setCoverUrl(book.coverImage)
+      setIsLoading(false)
+    } else {
+      // If no coverImage, try to fetch from API or local files
+      setIsLoading(true)
+      getBookCover(book)
+        .then((url) => {
+          setCoverUrl(url)
+          setIsLoading(false)
+        })
+        .catch(() => {
+          setIsLoading(false)
+        })
+    }
+  }, [book])
+
+  const handleImageError = () => {
+    setImageError(true)
+    
+    // If the image from books.json failed, try local files and then API
+    if (book.coverImage && !triedLocalFiles) {
+      setTriedLocalFiles(true)
+      setIsLoading(true)
+      
+      getBookCover(book)
+        .then((url) => {
+          if (url && url !== book.coverImage) {
+            setCoverUrl(url)
+            setImageError(false)
+          }
+          setIsLoading(false)
+        })
+        .catch(() => {
+          setIsLoading(false)
+        })
+    }
+  }
+
+  const hasCoverImage = coverUrl && !imageError && !isLoading
+
   return (
     <div 
       className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-gray-900/20 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
       onClick={onClick}
     >
-      {/* Book Cover Placeholder */}
-      <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        <div className="relative z-10 text-center">
-          <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500 mx-auto mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300" />
-          <div className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">
-            {book.category}
-          </div>
-        </div>
+      {/* Book Cover */}
+      <div className="relative h-48 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 overflow-hidden">
+        {hasCoverImage ? (
+          <img
+            src={coverUrl}
+            alt={`${book.title} cover`}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            onError={handleImageError}
+          />
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-900/20 dark:to-indigo-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative z-10 h-full flex items-center justify-center">
+              <div className="text-center">
+                <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500 mx-auto mb-2 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-300" />
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">
+                  {book.category}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Book Details */}

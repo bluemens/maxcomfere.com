@@ -1,5 +1,6 @@
 ---
 title: "Why Single Use Public Bathrooms are Gross"
+image: "/blog/bathroom.jpg"
 excerpt: "A framing of a relevant selection problem through a Freudian lens"
 category: "Daily"
 tags: ["Daily", "Philosophy", "War"]

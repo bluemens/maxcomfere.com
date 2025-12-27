@@ -1,5 +1,9 @@
+'use client'
+
 import { X, Star, Calendar, Tag, BookOpen, Quote } from 'lucide-react'
 import { Book } from '@/lib/reading'
+import { getBookCover } from '@/lib/bookCovers'
+import { useState, useEffect } from 'react'
 
 interface BookModalProps {
   book: Book | null
@@ -8,7 +12,57 @@ interface BookModalProps {
 }
 
 export default function BookModal({ book, isOpen, onClose }: BookModalProps) {
+  const [coverUrl, setCoverUrl] = useState<string | null>(null)
+  const [imageError, setImageError] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+  const [triedLocalFiles, setTriedLocalFiles] = useState(false)
+
+  useEffect(() => {
+    if (book && isOpen) {
+      setImageError(false)
+      setTriedLocalFiles(false)
+      if (book.coverImage) {
+        setCoverUrl(book.coverImage)
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+        getBookCover(book)
+          .then((url) => {
+            setCoverUrl(url)
+            setIsLoading(false)
+          })
+          .catch(() => {
+            setIsLoading(false)
+          })
+      }
+    }
+  }, [book, isOpen])
+
+  const handleImageError = () => {
+    setImageError(true)
+    
+    // If the image from books.json failed, try local files and then API
+    if (book && book.coverImage && !triedLocalFiles) {
+      setTriedLocalFiles(true)
+      setIsLoading(true)
+      
+      getBookCover(book)
+        .then((url) => {
+          if (url && url !== book.coverImage) {
+            setCoverUrl(url)
+            setImageError(false)
+          }
+          setIsLoading(false)
+        })
+        .catch(() => {
+          setIsLoading(false)
+        })
+    }
+  }
+
   if (!book || !isOpen) return null
+
+  const hasCoverImage = coverUrl && !imageError && !isLoading
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
@@ -29,9 +83,20 @@ export default function BookModal({ book, isOpen, onClose }: BookModalProps) {
           {/* Book Cover and Basic Info */}
           <div className="flex space-x-6 mb-6">
             <div className="flex-shrink-0">
-              <div className="w-32 h-40 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-lg flex items-center justify-center">
-                <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500" />
-              </div>
+              {hasCoverImage ? (
+                <div className="relative w-32 h-40 rounded-lg overflow-hidden">
+                  <img
+                    src={coverUrl}
+                    alt={`${book.title} cover`}
+                    className="w-full h-full object-cover"
+                    onError={handleImageError}
+                  />
+                </div>
+              ) : (
+                <div className="w-32 h-40 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 rounded-lg flex items-center justify-center">
+                  <BookOpen className="h-12 w-12 text-slate-400 dark:text-slate-500" />
+                </div>
+              )}
             </div>
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">{book.title}</h3>

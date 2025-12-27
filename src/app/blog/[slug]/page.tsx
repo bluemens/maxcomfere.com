@@ -1,12 +1,16 @@
 import Layout from '@/components/Layout'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Clock, ArrowLeft, Tag } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
 import rehypeHighlight from 'rehype-highlight'
+import rehypeKatex from 'rehype-katex'
 import { getPostBySlug, getAllPosts } from '@/lib/blog'
 import 'highlight.js/styles/github.css'
+import 'katex/dist/katex.min.css'
 
 // Generate static paths for all blog posts
 export async function generateStaticParams() {
@@ -23,6 +27,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) {
     notFound()
   }
+
 
   return (
     <Layout>
@@ -75,12 +80,50 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
         </header>
 
+        {/* Featured Image */}
+        {post.image && (
+          <div className="mb-12 rounded-lg overflow-hidden">
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1200}
+              height={600}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
+        )}
+
         {/* Article Content */}
         <article className="prose prose-lg max-w-none dark:prose-invert">
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeHighlight]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeHighlight, rehypeKatex]}
             components={{
+              // Custom image component for inline markdown images
+              img: (props: any) => {
+                const { src, alt } = props
+                if (!src) return null
+                const isExternal = src.startsWith('http')
+                
+                return (
+                  <div className="my-8">
+                    <Image
+                      src={src}
+                      alt={alt || ''}
+                      width={1200}
+                      height={600}
+                      className="w-full h-auto rounded-lg"
+                      unoptimized={isExternal}
+                    />
+                    {alt && (
+                      <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2 italic">
+                        {alt}
+                      </p>
+                    )}
+                  </div>
+                )
+              },
               // Custom styling for code blocks
               code: ({ className, children, ...props }) => {
                 return (
