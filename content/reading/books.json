@@ -68,5 +68,19 @@
     "tags": ["Philosophy", "Existential Risk", "Future"],
     "recommendedBy": "",
     "coverImage": "/books/the-precipice.jpg"
+  }, 
+  {
+    "title": "The Big Score",
+    "author": "Michael S. Malone",
+    "category": "History, Technology",
+    "description": "A history of the computer chip and the people who made it.",
+    "personalNotes": "",
+    "rating": null,
+    "year": 1985,
+    "status": "currently-reading",
+    "dateAdded": "2025-12-28",
+    "tags": ["History", "Technology", "Silicon Valley"],
+    "recommendedBy": "",
+    "coverImage": "/books/the-precipice.jpg"
   }
 ]

@@ -13,7 +13,7 @@ export default function HomePage() {
             Maximilian Comfere
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-            proof of existence through thinking, building and sharing
+            a collection of inputs, reflections and creations
           </p>
           <div className="flex items-center justify-center space-x-6 text-sm text-gray-500 dark:text-gray-400">
             <div className="flex items-center space-x-2">
@@ -27,44 +27,17 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Profile and Bio Section */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:space-x-12 space-y-8 lg:space-y-0">
-          {/* Profile Picture */}
-          <div className="flex-shrink-0 flex justify-center lg:justify-start">
-            <div className="w-48 h-48 rounded-full border-4 border-white dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-              <Image
-                src="/IMG_4728.jpeg"
-                alt="Maximilian Comfere"
-                width={400}
-                height={400}
-                className="w-full h-full object-cover object-top"
-                priority
-              />
-            </div>
-          </div>
-          
-          {/* Bio Content */}
-          <div className="flex-1 space-y-6">
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                I&apos;m a student, engineer, writer and architect passionate about the intersection of 
-                artificial intelligence, software development, political systems and philosophy.
-                I&apos;m currently studying computer engineering at Columbia University.
-              </p>
-              
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Here you can find a snapshot of my current projects and interests. It showcases the state of my current projects, some
-                relatively short, others life long endeavors, none of a gimmicky nature. All are built for application. Here I also broadcast
-                my thoughts writ large on a vairety of subjects ranging from geopolitical perspectives and philosophical inquiries to specific
-                development journals and technical documentation. I also share my reading list, although it is not exhaustive and only contains 
-                works read and purchased post August 2025
-              </p>
-              
-          
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Based in {socialLinks.location}. Open to discussion and disagreement (preferably the latter).
-              </p>
-            </div>
+        {/* Profile Picture */}
+        <div className="flex justify-center mb-16">
+          <div className="w-48 h-48 rounded-full border-4 border-white dark:border-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+            <Image
+              src="/IMG_4728.jpeg"
+              alt="Maximilian Comfere"
+              width={400}
+              height={400}
+              className="w-full h-full object-cover object-top"
+              priority
+            />
           </div>
         </div>
 
