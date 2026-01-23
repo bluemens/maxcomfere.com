@@ -1,6 +1,5 @@
 ---
 title: "Reason for Being"
-image: "/blog/marty_supreme.jpg"
 excerpt: "Spawn post. Justification for creation"
 category: "Personal"
 tags: ["Philosophy", "Purpose", "Meta"]
