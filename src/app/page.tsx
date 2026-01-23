@@ -2,6 +2,7 @@ import Layout from '@/components/Layout'
 import { Mail, MapPin, Calendar } from 'lucide-react'
 import { socialLinks } from '@/lib/socialLinks'
 import Image from 'next/image'
+import { TextScramble } from '@/components/ui/text-scramble'
 
 export default function HomePage() {
   return (
@@ -9,9 +10,13 @@ export default function HomePage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <TextScramble
+            as="h1"
+            className="text-4xl md:text-6xl font-bold mb-6"
+            duration={1.2}
+          >
             Maximilian Comfere
-          </h1>
+          </TextScramble>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             a collection of inputs, reflections and creations
           </p>
